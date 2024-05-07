@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Discover food, culinary inspiration on our food website. Explore a world of flavors and delight your taste buds today.">
+  <meta name="keywords" content="cooking, food blog, cuisine, dishes">
+
+  <title>Foodie</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+  <link rel="stylesheet" href="/home.css">
+  <link rel="icon" href="/images/favicon.ico" type="image">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+
+    #cart-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow-y: auto;
+        z-index: 1;
+    }
+
+    #scroll-container {
+        max-height: 400px;
+        overflow-y: auto;
+        margin: 0 auto; /* Center the container horizontally */
+    }
+
+    #cart-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    #cart-table th,
+    #cart-table td {
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        white-space: nowrap; /* Prevent item names from wrapping to the next line */
+        overflow: hidden; /* Hide overflowing content */
+        text-overflow: ellipsis; /* Display an ellipsis (...) to indicate text overflow */
+    }
+
+    #cart-table th {
+        background-color: #f2f2f2;
+    }
+
+    /* Add a class for the item name column if you don't want ellipsis on hover */
+    .no-ellipsis:hover {
+        text-overflow: clip; /* Display the full text on hover */
+    }
+
+    .totals {
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    .full_menu {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .full_menu button {
+        margin: 0 10px;
+    }
+</style>
+
+<style>
+.choose-container {
+  text-align: center;
+  position: relative;
+}
+
+.vege-container {
+  
+  text-align: center;
+}
+
+.vege {
+  
+  padding: 10px 20px;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Add opacity transition */
+  cursor: pointer;
+  user-select: none;
+  display: inline-block; /* Display as inline-block to center within the row */
+
+  /* Button-like styling */
+  background-color: rgb(155, 109, 10);
+  border: 2px solid rgb(155, 109, 10);
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+}
+
+.vege:hover {
+  background-color: rgb(133, 92, 7); /* Darken the color on hover */
+  border: 2px solid rgb(133, 92, 7); /* Darken the border on hover */
+}
+
+.buttons-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  z-index: 1; /* Add a lower z-index */
+}
+
+.choose-container.show-buttons .buttons-container {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.button_veg {
+  background-color: rgb(155, 109, 10);
+  border-radius: 45px;
+  font-size: 15px;
+  padding: 10px 45px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.choose-container.show-buttons .buttons-container {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+</style>
+
+
+
+<style>
+  /* Add your styles here */
+  .swiper-container {
+    width: 80%;
+    height: 50vh;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 15px;
+  }
+
+  .swiper-wrapper {
+    display: flex;
+  }
+
+  .swiper-slide {
+    flex: 0 0 auto;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+  }
+
+  .swiper-slide img {
+      width: 50%; /* Set a fixed width for all images */
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px 0 0 15px;
+    }
+  .descriptionn {
+      flex: 0 0 auto;
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: left;
+    }
+  .swiper-container:hover .swiper-button-prev,
+  .swiper-container:hover .swiper-button-next {
+    opacity: 1;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Hide scrollbar */
+  .swiper-container::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+
+
+
+
+<style>
+  .line-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 0vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+
+  .beautiful-line {
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(to right, #3498db, #e74c3c);
+  }
+
+  .circle {
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #3498db;
+  }
+</style>
+
+
+
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Nunito:400,700,800,900');
+
+
+
+#searchBox {
+    position: absolute;
+    text-align: center;
+    top: 20%;
+}
+
+#searchInput {
+    /* display: none; */
+    z-index: 999;
+}
+
+.containerr {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-wrapper {
+    width: 350px;
+    height: 100px;
+    position: relative;
+    top: 30%;
+
+    -webkit-filter: url("#goo");
+    filter: url("#goo");
+}
+
+.inputSearch {
+    font-family: 'Nunito';
+    font-weight: 800;
+    width: 300px;
+    height: 20px;
+    border-radius: 10px;
+    top: 0;
+    margin-top: -10px;
+    border: none;
+    background: #333;
+    outline: none;
+    z-index: 2;
+    color: #f9f9f9;
+    cursor: auto;
+}
+
+.bubble {
+    position: absolute;
+    display: inline-block;
+    margin: 0 -3px 0 -3px;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    background: #333;
+    border-radius: 100%;
+    transition: left 1s, width 1s, border-radius 1.5s, height 1s;
+    z-index: -1;
+}
+
+.animate {
+    animation-name: bubbling;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes bubbling {
+    0% {
+        transform: translateY(0px);
+    }
+    25% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+</style>
+
+
+<style>
+  @keyframes lights {
+  0% {
+    color: hsl(230, 40%, 80%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+      1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+  
+  30% { 
+    color: hsl(230, 80%, 90%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+      -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+      0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  40% { 
+    color: hsl(230, 100%, 95%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 90%, 0.5),
+      -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+      0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  70% {
+    color: hsl(230, 80%, 90%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+      0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+      -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  100% {
+    color: hsl(230, 40%, 80%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+      -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+  
+}
+</style>
+</head>
+
+<body>
+
+  <div class="home_home" id="other-div">
+    <div class="top">
+      <img src="/images/copy1.jpg" alt="Foodie" class="bgound">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/home">
+            <span style="color:#FF0000">F</span>
+            <span style="color:#66CC66">O</span>
+            <span style="color:#FF9966">O</span>
+            <span style="color:#FFCCCC">D</span>
+            <span style="color:#FF0066">I</span>
+            <span style="color:#FF0099">E</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav ml-auto me-5">
+              <li class="nav-item">
+                <a class="nav-link" href="/home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#mc00">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:;" onclick="toggleContent('cart-container')">Cart</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#bottom-container">Contact Us</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class='fas fa-user-alt' style='font-size:25px'></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/login">Login</a></li>
+                  <li><a class="dropdown-item" href="/signup">Signup</a></li>
+                </ul>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+      <div class="elem1">
+        <p>Family Restaurant</p>
+      </div>
+      <div class="elem2">
+        <p>At FOODIE, we're passionate about delivering exceptional culinary experiences right to your doorstep. We
+          believe that good food brings joy, comfort, and connection, and we're here to make it easier for you to
+          enjoy delicious meals whenever and wherever you desire.</p>
+        <div class="veg"><a href="#mc00"><button class="button_veg"><b>Order Now</b></button></a></div>
+      </div>
+    </div>
+
+
+
+
+<br>
+<br>
+
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src="/images/dahikesholay.jpg" alt="Image 1">
+      <div class="descriptionn">
+        <h2>Dahi Ke Sholay</h2>
+        <p>Deep-fried hung curd rolls, spiced and crispy outside with a creamy filling inside. A delightful Indian appetizer with a burst of flavors.</p>
+        <a href="#veg"><button class="btn btn-primary">Visit...</button></a>
+
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/paneertikka.jpg" alt="Image 1">
+      <div class="descriptionn">
+        <h2>Paneer Tikka</h2>
+        <p>Grilled or tandoor-cooked cubes of marinated paneer (Indian cottage cheese), bursting with smoky, spicy, and tangy flavors. </p>
+        <a href="#Starters"><button class="btn btn-primary">Visit...</button></a>
+
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/orange.jpg" alt="Image 1">
+      <div class="descriptionn">
+        <h2>Orange Slushie</h2>
+        <p>A refreshing and icy beverage made by blending ice with orange-flavored syrup or juice, creating a slushy and citrusy treat perfect for cooling down on a hot day.</p>
+        <a href="#drinks"><button class="btn btn-primary">Visit...</button></a>
+
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/burger.jpg" alt="Image 2">
+      <div class="descriptionn">
+        <h2>Veg Burger</h2>
+        <p> A plant-based alternative to the classic burger, featuring a vegetarian patty with assorted toppings in a bun.</p>
+        <a href="#snacks"><button class="btn btn-primary">Visit...</button></a>
+      </div>
+    </div>
+    <!-- Add more slides as needed -->
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
+<br>
+<br>
+
+<h2 style="margin: auto;
+font-size: 2.5rem;
+font-weight: 300;
+animation: lights 5s 750ms linear infinite; text-align: center;">Feeling Hungry...</h2>
+<div class="containerr">
+  <div class="search-wrapper">
+      <div id="searchBox">
+          <form action=""><input class="bubble" type="text" name="search" id="search-input" oninput="searchFun()" onkeypress="handleKeyPress(event)"></form>
+          <div class="bubble"><p class="S" style="color: #4C83F0; ">S</p></div>
+          <div class="bubble" style="left: 50px;"><p style="color: #D1333B;">E</p></div>
+          <div class="bubble" style="left: 100px;"><p style="color: #EEB80B;">A</p></div>
+          <div class="bubble" style="left: 150px;"><p style="color: #4C83F0;">R</p></div>
+          <div class="bubble" style="left: 200px;"><p style="color: #1CAF60;">C</p></div>
+          <div class="bubble" style="left: 250px;"><p style="color: #D1333B;">H</p></div>
+          <div class="bubble" style="left: 300px;"><p>🔎</p></div>
+      </div>
+
+  </div>
+</div>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+      <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+      </filter>
+  </defs>
+</svg>
+
+
+
+<div class="line-container">
+  <div class="beautiful-line"></div>
+</div>
+
+    <div class="middle-container">
+      <div class="mc0" id="mc00">
+        <p>Our Menu</p>
+        <div class="line-container">
+          <div class="beautiful-line"></div>
+        </div>
+      </div>
+
+      <div class="choose-container">
+        <div class="buttons-container">
+          
+<div class="veg"><a href="#veg"><button class="button_veg">VEG</button></a></div>
+        <div class="nonveg"><a href="#nonveg"><button class="button_nonveg">NON-VEG</button></a></div>
+        <div class="veg"><a href="#starters"><button class="button_veg">STARTERS</button></a></div>
+        <div class="nonveg"><a href="#maincourse"><button class="button_nonveg">MAIN COURSE</button></a></div>
+        <div class="veg"><a href="#desserts"><button class="button_veg">DESSERTS</button></a></div>
+        <div class="nonveg"><a href="#breads"><button class="button_nonveg">BREADS</button></a></div>
+        <div class="veg"><a href="#snacks"><button class="button_veg">SNACKS</button></a></div>
+        <div class="nonveg"><a href="#drinks"><button class="button_nonveg">DRINKS</button></a></div>        </div>
+      </div>
+      <div class="vege-container">
+
+      <div class="vege" id="filters-text" style="font-size: xx-large;">FILTERS:</div>
+      </div>
+    </div>
+
+    <div class="container py-5" style="clear: both;" id="products-container">
+      <div class="row" id="veg">
+        <div class="col-lg-10 mx-auto col-12 text-center mb-3">
+          <h1><a href="#veg" class="mt-0 text-primary">Veg</a></h1>
+
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/dahikesholay.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Dahi Ke Sholay</h5>
+              <p class="card-text">Price : 120</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product8')">-</button>
+                <span id="quantity_product8">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product8')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Dahi Ke Sholay', 120, 'product8')">Add
+                to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/biryani.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Biryani</h5>
+              <div class="description" style="max-height: 100px; overflow: hidden;">
+                <p class="card-text">
+                  Price : 150</p>
+                <div class="quantity">
+                  <button class="btn btn-secondary" onclick="decrementQuantity('product3')">-</button>
+                  <span id="quantity_product3">0</span>
+                  <button class="btn btn-secondary" onclick="incrementQuantity('product3')">+</button>
+                </div>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Biryani', 150, 'product3')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px;"><img src="/images/mixveg.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Mix Veg</h5>
+              <div class="description" style="max-height: 100px; overflow: hidden;">
+                <p class="card-text">Price : 100</p>
+                <div class="quantity">
+                  <button class="btn btn-secondary" onclick="decrementQuantity('product14')">-</button>
+                  <span id="quantity_product14">0</span>
+                  <button class="btn btn-secondary" onclick="incrementQuantity('product14')">+</button>
+                </div>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Mix Veg', 100, 'product14')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/chole_bhature.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Chole Bhature</h5>
+              <div class="description" style="max-height: 100px; overflow: hidden;">
+                <p class="card-text">Price : 150</p>
+                <div class="quantity">
+                  <button class="btn btn-secondary" onclick="decrementQuantity('product2')">-</button>
+                  <span id="quantity_product2">0</span>
+                  <button class="btn btn-secondary" onclick="incrementQuantity('product2')">+</button>
+                </div>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Chole Bhature', 150, 'product2')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="row" id="nonveg">
+        <div class="col-lg-10 mx-auto col-12 text-center mb-3">
+          <h1><a href="#nonveg" class="mt-0 text-primary">Non-Veg</a></h1>
+
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/muttonkebab.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Mutton Kebab</h5>
+              <p class="card-text">Price : 200</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product12')">-</button>
+                <span id="quantity_product12">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product12')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Mutton Kebab', 200, 'product12')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/friedchicken.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Fried Chicken with Fries</h5>
+              <p class="card-text">Price : 100</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product9')">-</button>
+                <span id="quantity_product9">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product9')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary"
+                onclick="addToCart('Fried Chicken with Fries', 100, 'product9')">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/chickenbiryani.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Chicken Biryani</h5>
+              <p class="card-text">Price : 120</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product16')">-</button>
+                <span id="quantity_product16">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product16')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Chicken Biryani', 120, 'product16')">Add
+                to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/chicken65.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Chicken 65</h5>
+              <p class="card-text">Price : 200</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product17')">-</button>
+                <span id="quantity_product17">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product17')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Chicken 65', 200, 'product17')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="row" id="starters">
+        <div class="col-lg-10 mx-auto col-12 text-center mb-3">
+          <h1><a href="#starters" class="mt-0 text-primary">Starters</a></h1>
+
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/pakode.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Pakode</h5>
+              <p class="card-text">Price : 50</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product18')">-</button>
+                <span id="quantity_product18">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product18')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Pakode', 50, 'product18')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/paneertikka.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Paneer Tikka</h5>
+              <p class="card-text">Price : 200</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product19')">-</button>
+                <span id="quantity_product19">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product19')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Paneer Tikka', 200, 'product19')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/vegkebab.jpeg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Veg Kebab</h5>
+              <p class="card-text">Price : 120</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product20')">-</button>
+                <span id="quantity_product20">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product20')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Veg Kebab', 120, 'product20')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/tomato-soup.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Tomato Soup</h5>
+              <p class="card-text">Price : 100</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product21')">-</button>
+                <span id="quantity_product21">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product21')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Tomato Soup', 100, 'product21')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="row" id="maincourse">
+        <div class="col-lg-10 mx-auto col-12 text-center mb-3">
+          <h1><a href="#maincourse" class="mt-0 text-primary">Main Course</a></h1>
+
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px;"><img src="/images/kadhai_paneer.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Kadhai Paneer</h5>
+              <div class="description" style="max-height: 100px; overflow: hidden;">
+                <p class="card-text">Price : </p>
+                <div class="quantity">
+                  <button class="btn btn-secondary" onclick="decrementQuantity('product1')">-</button>
+                  <span id="quantity_product1">0</span>
+                  <button class="btn btn-secondary" onclick="incrementQuantity('product1')">+</button>
+                </div>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Kadhai Paneer', 150, 'product1')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px;"><img src="/images/malaikofta.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Malai Kofta</h5>
+              <div class="description" style="max-height: 100px; overflow: hidden;">
+                <p class="card-text">Price : </p>
+                <div class="quantity">
+                  <button class="btn btn-secondary" onclick="decrementQuantity('product13')">-</button>
+                  <span id="quantity_product13">0</span>
+                  <button class="btn btn-secondary" onclick="incrementQuantity('product13')">+</button>
+                </div>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Malai Kofta', 120, 'product13')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px;"><img src="/images/dalfry.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Dal Fry</h5>
+              <div class="description" style="max-height: 100px; overflow: hidden;">
+                <p class="card-text">Price : </p>
+                <div class="quantity">
+                  <button class="btn btn-secondary" onclick="decrementQuantity('product15')">-</button>
+                  <span id="quantity_product15">0</span>
+                  <button class="btn btn-secondary" onclick="incrementQuantity('product15')">+</button>
+                </div>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Dal Fry', 130, 'product15')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px;"><img src="/images/mixveg.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Mix Veg Seasonal</h5>
+              <div class="description" style="max-height: 100px; overflow: hidden;">
+                <p class="card-text">Price : </p>
+                <div class="quantity">
+                  <button class="btn btn-secondary" onclick="decrementQuantity('product140')">-</button>
+                  <span id="quantity_product14">0</span>
+                  <button class="btn btn-secondary" onclick="incrementQuantity('product140')">+</button>
+                </div>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Mix Veg Seasonal', 100, 'product140')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="row" id="snacks">
+        <div class="col-lg-10 mx-auto col-12 text-center mb-3">
+          <h1><a href="#snacks" class="mt-0 text-primary">Snacks</a></h1>
+
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/friedchicken.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Fried Chicken with Fries</h5>
+              <p class="card-text">Price : 200</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product26')">-</button>
+                <span id="quantity_product26">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product26')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary"
+                onclick="addToCart('Fried Chicken with Fries', 200, 'product26')">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/burger.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Veg Burger</h5>
+              <p class="card-text">Price : 120</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product6')">-</button>
+                <span id="quantity_product6">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product6')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Veg Burger', 120, 'product6')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/dosa.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Dosa</h5>
+              <p class="card-text">Price : 120</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product7')">-</button>
+                <span id="quantity_product7">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product7')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Dosa', 120, 'product7')">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/pizza.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Pizza</h5>
+              <p class="card-text">Price : 250</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product5')">-</button>
+                <span id="quantity_product5">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product5')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Pizza', 250, 'product5')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="row" id="desserts">
+        <div class="col-lg-10 mx-auto col-12 text-center mb-3">
+          <h1><a href="#desserts" class="mt-0 text-primary">Desserts</a></h1>
+
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/chocolateicecream.jpeg"
+                class="card-img-top food_img" style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Chocolate Icecream</h5>
+              <div class="description" style="max-height: 100px; overflow: hidden;">
+                <p class="card-text">
+                  Price : 120</p>
+                <div class="quantity">
+                  <button class="btn btn-secondary" onclick="decrementQuantity('product4')">-</button>
+                  <span id="quantity_product4">0</span>
+                  <button class="btn btn-secondary" onclick="incrementQuantity('product4')">+</button>
+                </div>
+              </div>
+              <a href="javascript:;" class="btn btn-primary"
+                onclick="addToCart('Chocolate Icecream', 120, 'product4')">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/oreo.jpeg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Oreo Shake</h5>
+              <p class="card-text">Price : 80</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product11')">-</button>
+                <span id="quantity_product11">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product11')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Oreo Shake', 80, 'product11')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/rasgulla.jpeg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Rasgulla</h5>
+              <p class="card-text">Price : 50</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product31')">-</button>
+                <span id="quantity_product31">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product31')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Rasgulla', 50, 'product31')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/gulabjamun.jpeg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Gulab Jamun</h5>
+              <p class="card-text">Price : 50</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product32')">-</button>
+                <span id="quantity_product32">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product32')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Gulab Jamun', 50, 'product32')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="row" id="drinks">
+        <div class="col-lg-10 mx-auto col-12 text-center mb-3">
+          <h1><a href="#drinks" class="mt-0 text-primary">Drinks</a></h1>
+
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/virginmojito.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Virgin Mojito</h5>
+              <p class="card-text">Price : 120</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product10')">-</button>
+                <span id="quantity_product10">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product10')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Virgin Mojito', 120, 'product10')">Add
+                to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/blue.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Blue Moon</h5>
+              <p class="card-text">Price : 120</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product34')">-</button>
+                <span id="quantity_product34">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product34')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Blue Moon', 120, 'product34')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/orange.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Orange Slushie</h5>
+              <p class="card-text">Price : 110</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product35')">-</button>
+                <span id="quantity_product35">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product35')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Orange Slushie', 110, 'product35')">Add
+                to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/lemonade.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Lemonade</h5>
+              <p class="card-text">Price : 75</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product36')">-</button>
+                <span id="quantity_product36">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product36')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Lemonade', 75, 'product36')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="row" id="breads">
+        <div class="col-lg-10 mx-auto col-12 text-center mb-3">
+          <h1><a href="#breads" class="mt-0 text-primary">Breads</a></h1>
+
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/tandooriroti.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Tandoori Roti</h5>
+              <p class="card-text">Price : 12</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product37')">-</button>
+                <span id="quantity_product37">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product37')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Tandoori Roti', 12, 'product37')">Add
+                to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/naan.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Naan</h5>
+              <p class="card-text">Price : 15</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product38')">-</button>
+                <span id="quantity_product38">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product38')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Naan', 15, 'product38')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/missi-roti.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Missi Roti</h5>
+              <p class="card-text">Price : 15</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product39')">-</button>
+                <span id="quantity_product39">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product39')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Missi Roti', 15, 'product39')">Add to
+                Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div class="card"
+            style="width: 100%;height: 400px;text-align: center ; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; clear: both;">
+            <div class="f1" style="height: 200px"><img src="/images/paneerparatha.jpg" class="card-img-top food_img"
+                style="object-fit: cover; height: 100%" ;></div>
+            <div class="card-body">
+              <h5 class="card-title">Paneer Paratha</h5>
+              <p class="card-text">Price : 40</p>
+              <div class="quantity">
+                <button class="btn btn-secondary" onclick="decrementQuantity('product40')">-</button>
+                <span id="quantity_product40">0</span>
+                <button class="btn btn-secondary" onclick="incrementQuantity('product40')">+</button>
+              </div>
+              <a href="javascript:;" class="btn btn-primary" onclick="addToCart('Paneer Paratha', 40, 'product40')">Add
+                to Cart</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    <div class="line-container">
+      <div class="beautiful-line"></div>
+    </div>
+    <div class="full_menu" style="text-align: center;">
+      <a href="javascript:;" onclick="toggleContent('cart-container')" style="margin-right: 100px;">
+        <button class="button_veg">Cart</button>
+      </a>
+      <a href="javascript:;" onclick="toggleContent('additional-div')" style="margin-left: 100px;">
+        <button class="button_veg">Checkout</button>
+      </a>
+    </div>
+<br>
+    <div class="line-container">
+      <div class="beautiful-line"></div>
+    </div>
+    <div class="bottom-container" id="bottom-container">
+      <div class="bottom-left" id="bottom-left">Contact Us<br>
+        <p style="font-size: medium;">Address: Street, City, <br>Email: foodie@abc.com<br>Phone:
+          xxxxxxxxxx</p>
+      </div>
+      <div class="bottom-center">FOODIE
+        <br>
+        <div class="map"><iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3632.4592319024828!2d77.15831277481307!3d24.434847562157277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397aff3abbbad69f%3A0x9af2aa865b395399!2sJaypee%20University%20Of%20Engineering%20And%20Technology%2C%20Guna!5e0!3m2!1sen!2sin!4v1695227349880!5m2!1sen!2sin"
+            width=100% height=75% allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+      </div>
+      
+      <div class="bottom-right">Timings <br>
+        <p style="font-size: medium;">Monday - Friday: 12:00 - 23:00<br>
+          Saturday - Sunday: 12:00 - 00:00</p>
+      </div>
+    </div>
+    
+    <footer class="my-5 pt-5 text-muted text-center text-small" style="clear: both;">
+      <p class="mb-1">© Foodie</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <div id="cart-container" style="display: none;">
+    <h2>Your Cart</h2>
+    <div id="scroll-container">
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody id="cart-list"></tbody>
+        </table>
+    </div>
+    <div class="totals">
+        <p id="total-items"></p>
+        <p id="total-price"></p>
+    </div>
+    <div class="full_menu">
+        <a href="javascript:;" onclick="goBack()" style="margin-right: 10px;">
+            <button class="button_veg">Back to Menu</button>
+        </a>
+        <a href="javascript:;" onclick="toggleContent('additional-div')" style="margin-left: 10px;">
+            <button class="button_veg">Checkout</button>
+        </a>
+    </div>
+</div>
+  
+  
+
+
+  <div class="container" id="additional-div" style="display: none;">
+    <div class="py-5 text-center">
+
+      <h2>Checkout</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="badge badge-secondary badge-pill"></span>
+        </h4>
+        <i class='fa fa-shopping-cart fa-5x'></i>
+<br>
+<br>
+<br>
+<br>
+<br>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="gooBack()">Get More Items</button>
+        
+      </div>
+      
+      <div class="col-md-8 order-md-1">
+
+        <h4 class="mb-3">Billing Details</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="firstName">First name</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="lastName">Last name</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="username">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+              </div>
+              <input type="text" class="form-control" id="username" placeholder="Username" required>
+              <div class="invalid-feedback" style="width: 100%;">
+                Your username is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email">Email <span class="text-muted">(Optional)</span></label>
+            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+            <div class="invalid-feedback">
+              Please enter a valid email address for shipping updates.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+            <div class="invalid-feedback">
+              Please enter your shipping address.
+            </div>
+          </div>
+
+
+          <hr class="mb-4">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="save-info">
+            <label class="custom-control-label" for="save-info">Save this information for next time</label>
+          </div>
+          <hr class="mb-4">
+
+          <h4 class="mb-3">Payment</h4>
+
+          <p id="checkout-total-price" class="font-weight-bold text-success mt-3"></p>
+
+
+          <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+              <label class="custom-control-label" for="credit">Credit card</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+              <label class="custom-control-label" for="debit">Debit card</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+              <label class="custom-control-label" for="paypal">UPI</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="cc-name">Name on card</label>
+              <input type="text" class="form-control" id="cc-name" placeholder="" required>
+              <small class="text-muted">Full name as displayed on card</small>
+              <div class="invalid-feedback">
+                Name on card is required
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="cc-number">Credit card number</label>
+              <input type="text" class="form-control" id="cc-number" placeholder="" required>
+              <div class="invalid-feedback">
+                Credit card number is required
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 mb-3">
+              <label for="cc-expiration">Expiration</label>
+              <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+              <div class="invalid-feedback">
+                Expiration date required
+              </div>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="cc-cvv">CVV</label>
+              <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+              <div class="invalid-feedback">
+                Security code required
+              </div>
+            </div>
+          </div>
+          <hr class="mb-4">
+          <button class="btn btn-primary btn-lg btn-block" type="button" onclick="showCheckoutInfo()">Continue to checkout</button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">© Foodie</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </div>
+  <div id="checkout-info" style="display: none;">
+    <!-- Information about the checkout, dynamically populated by JavaScript -->
+  </div>
+
+  <script>
+    let quantities = {}; 
+    let cartItems = []; 
+
+    // Function to increment quantity for a specific product
+    function incrementQuantity(productID) {
+      if (!quantities[productID]) {
+        quantities[productID] = 1;
+      } else {
+        quantities[productID]++;
+      }
+      updateQuantity(productID);
+    }
+
+    // Function to decrement quantity for a specific product
+    function decrementQuantity(productID) {
+      if (quantities[productID] && quantities[productID] > 0) {
+        quantities[productID]--;
+        updateQuantity(productID);
+      }
+    }
+
+    // Function to update the quantity display for a specific product
+    function updateQuantity(productID) {
+      setTimeout(() => {
+        const quantitySpan = document.getElementById(`quantity_${productID}`);
+        if (quantitySpan) {
+          quantitySpan.innerText = quantities[productID];
+        }
+      }, 0);
+    }
+
+    // Function to add items to the cart
+    function addToCart(itemName, price, productID) {
+      
+      const existingItemIndex = cartItems.findIndex(item => item.name === itemName);
+
+      if (existingItemIndex !== -1) {
+        // If the item already exists in the cart, update the quantity
+        cartItems[existingItemIndex].quantity = quantities[productID];
+      } else {
+        // If the item doesn't exist in the cart, add it
+        cartItems.push({
+          name: itemName,
+          price: price,
+          quantity: quantities[productID],
+          // Add more properties if needed
+        });
+      }
+
+      // Update the cart display
+      updateCartDisplay();
+    }
+
+    // Function to update the cart display
+    function updateCartDisplay() {
+      // Display a simple alert with the current items in the cart
+      const cartItemNames = cartItems.map(item => `${item.name} x${item.quantity}`).join('\n');
+      alert(`Cart Items:\n${cartItemNames}`);
+    }
+
+  </script>
+
+<script>
+  function updateCartDisplay() {
+    const cartList = document.getElementById('cart-list');
+    const totalPriceElement = document.getElementById('total-price');
+    const totalItemsElement = document.getElementById('total-items');
+
+    // Initialize total price and total items
+    let totalPrice = 0;
+    let totalItems = 0;
+
+    // Clear the existing content of the cartList
+    cartList.innerHTML = '';
+
+    // Check if cartItems is empty
+    if (cartItems.length === 0) {
+      // Display "Cart is empty" message
+      const emptyCartMessage = document.createElement('tr');
+      emptyCartMessage.innerHTML = '<td colspan="4">Cart is empty</td>';
+      cartList.appendChild(emptyCartMessage);
+    } else {
+      // Iterate through cartItems and update the cart display
+      for (const item of cartItems) {
+        // Skip items with quantity 0
+        if (item.quantity === 0) {
+          continue;
+        }
+
+        const listItem = document.createElement('tr');
+        const itemTotalPrice = item.price * item.quantity;
+
+        // Apply styling to the cart item
+        listItem.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.quantity}</td>
+          <td>Rs ${item.price.toFixed(2)}</td>
+          <td>Rs ${itemTotalPrice.toFixed(2)}</td>
+        `;
+        cartList.appendChild(listItem);
+
+        // Update total price and total items
+        totalPrice += itemTotalPrice;
+        totalItems += item.quantity;
+      }
+    }
+
+    // Display total items and total price in the cart
+    totalItemsElement.textContent = `Total Items: ${totalItems}`;
+    totalPriceElement.textContent = `Total Price: Rs ${totalPrice.toFixed(2)}`;
+
+    // Display total price in the checkout section
+    const checkoutTotalPriceElement = document.getElementById('checkout-total-price');
+    if (checkoutTotalPriceElement) {
+      checkoutTotalPriceElement.textContent = `Total Price: Rs ${totalPrice.toFixed(2)}`;
+    }
+
+    // Debugging: Log the values
+    console.log('Total Items:', totalItems);
+    console.log('Total Price:', totalPrice);
+  }
+
+  // Call updateCartDisplay whenever cartItems is updated
+  updateCartDisplay();
+</script>
+
+
+<script>
+  const searchFun = (event) => {
+  // Check if the Enter key is pressed (key code 13)
+  if (event.key === 'Enter') {
+    const searchbox = document.getElementById("search-input").value.toUpperCase();
+    const storeitems = document.getElementById("products-container");
+    const products = document.getElementsByClassName("col-lg-3 col-md-4 col-sm-6 col-12");
+    const pname = storeitems.getElementsByTagName("h5");
+
+    let scrollToElement = null;
+
+    for (var i = 0; i < pname.length; i++) {
+      let match = products[i].getElementsByTagName('h5')[0];
+      if (match) {
+        let textValue = match.textContent || match.innerHTML;
+        if (textValue.toUpperCase().indexOf(searchbox) > -1) {
+          products[i].style.display = "";
+          scrollToElement = products[i];
+        } else {
+          products[i].style.display = "none";
+        }
+      }
+    }
+
+    if (scrollToElement) {
+      scrollToElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Prevent the default form submission behavior
+    event.preventDefault();
+  }
+};
+
+const handleKeyPress = (event) => {
+  searchFun(event);
+};
+
+</script>
+
+  <script>
+    document.getElementById('other-div').style.display = 'block';
+    document.getElementById('cart-container').style.display = 'none';
+    document.getElementById('additional-div').style.display = 'none';
+
+    function toggleContent(targetDiv) {
+      const cartContainer = document.getElementById('cart-container');
+      const otherDiv = document.getElementById('other-div');
+      const additionalDiv = document.getElementById('additional-div');
+
+      if (targetDiv === 'cart-container') {
+        cartContainer.style.display = 'block';
+        otherDiv.style.display = 'none';
+        additionalDiv.style.display = 'none';
+        history.pushState({ state: 'cart' }, 'Your Cart', '?cart');
+      } else if (targetDiv === 'additional-div') {
+        cartContainer.style.display = 'none';
+        otherDiv.style.display = 'none';
+        additionalDiv.style.display = 'block';
+        history.pushState({ state: 'additional' }, 'Additional Div', '?additional');
+      }
+    }
+
+    window.addEventListener('popstate', function (event) {
+      const state = event.state;
+      const cartContainer = document.getElementById('cart-container');
+      const otherDiv = document.getElementById('other-div');
+      const additionalDiv = document.getElementById('additional-div');
+
+      if (state === 'cart') {
+        cartContainer.style.display = 'block';
+        otherDiv.style.display = 'none';
+        additionalDiv.style.display = 'none';
+      } else if (state === 'additional') {
+        cartContainer.style.display = 'none';
+        otherDiv.style.display = 'none';
+        additionalDiv.style.display = 'block';
+      } else {
+        cartContainer.style.display = 'none';
+        otherDiv.style.display = 'block';
+        additionalDiv.style.display = 'none';
+      }
+    });
+  </script>
+
+
+<script>
+  function goBack() {
+      window.history.back();
+  }
+</script>
+
+<script>
+  function gooBack() {
+      window.history.back();
+  }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the elements
+  const filtersText = document.getElementById("filters-text");
+  const chooseContainer = document.querySelector(".choose-container");
+
+  // Add click event listener to the FILTERS text
+  filtersText.addEventListener("click", function () {
+    // Toggle the class to show/hide buttons with smooth transition
+    chooseContainer.classList.toggle("show-buttons");
+
+    // Toggle the visibility of the "FILTERS" text
+    filtersText.style.opacity = filtersText.style.opacity === "0" ? "1" : "0";
+  });
+});
+
+
+</script>
+
+
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  var mySwiper = new Swiper('.swiper-container', {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+  });
+
+  document.querySelector('.swiper-container').addEventListener('mouseenter', function () {
+    mySwiper.autoplay.stop();
+  });
+
+  document.querySelector('.swiper-container').addEventListener('mouseleave', function () {
+    mySwiper.autoplay.start();
+  });
+
+  document.querySelector('.swiper-container').addEventListener('click', function () {
+    // Toggle next and previous on click
+    if (mySwiper.isEnd) {
+      mySwiper.slideTo(0);
+    } else {
+      mySwiper.slideNext();
+    }
+  });
+</script>
+
+
+<script>
+  const bubbles = document.querySelectorAll('.bubble');
+const bubblePosition = [0, 50]
+const search = document.querySelector('.search-wrapper');
+const S = document.querySelector('.S');
+const input = document.createElement('input');
+input.type = 'text';
+input.className = 'inputSearch';
+input.placeholder = '_ type something';
+let counter = 0;
+let distanceAll = [];
+
+function bubbling() {
+    if(counter < bubbles.length) {
+        setTimeout(function() {
+            bubbles[counter].classList.add('animate');
+            let distance = ([counter] * 50) + 'px';
+            distanceAll[counter] = distance;
+            counter++;
+            bubbling(counter);
+        }, 80);
+    }
+}
+
+bubbling();
+
+
+search.addEventListener('mouseover', function() {
+    console.log('ciao');
+    bubbles[0].style = 'width: 350px; border-radius: 10px;  z-index: 1;';
+    bubbles[0].classList.remove('animate');
+    input.placeholder = '>';
+    S.style.color = '#333333';
+    setTimeout(() => {
+        S.innerHTML = '';
+        bubbles[0].appendChild(input);
+        let inputAppended = document.querySelector('.inputSearch');
+        inputAppended.focus();
+        inputAppended.style = 'caret-color: transparent';
+        inputAppended.addEventListener('keypress', (e) => {
+            if(e.keyCode == 13) {
+                console.log('Now I am removing text but you can do whatever you want with text value 😊');
+                inputAppended.value = '';              
+            }            
+        });
+    }, 1000);
+});
+
+search.addEventListener('mouseout', function() {
+    console.log('ciao');
+    let inputAppended = document.querySelector('.inputSearch');
+    bubbles[0].style = '';
+    bubbles[0].classList.add('animate');
+    S.style.color = '#4C83F0';
+    inputAppended.value = '';
+    inputAppended.style = 'caret-color: transparent; z-index: -1;';
+    input.placeholder = '';
+
+    setTimeout(() => {
+        bubbles[0].removeChild(input);
+        S.innerHTML = 'S';
+    }, 1000);
+});
+</script>
+
+
+<script>
+  function showCheckoutInfo() {
+
+    // Get form values
+
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+    document.getElementById('additional-div').style.display = 'none';
+
+    // Construct the HTML for the checkout information
+    const checkoutInfoHTML = `
+      <h4>Checkout Information</h4>
+      <p><strong>First Name:</strong> ${firstName}</p>
+      <p><strong>Last Name:</strong> ${lastName}</p>
+      <p><strong>Username:</strong> ${username}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Address:</strong> ${address}</p>
+      <!-- Add more fields as needed -->
+
+      <hr class="mb-4">
+      <p><strong>Payment Method:</strong> ${getSelectedPaymentMethod()}</p>
+      <!-- Add more payment-related information as needed -->
+    `;
+
+    // Display the checkout information
+    const checkoutInfoDiv = document.getElementById('checkout-info');
+    checkoutInfoDiv.innerHTML = checkoutInfoHTML;
+    checkoutInfoDiv.style.display = 'block';
+
+    // Hide the form
+    document.querySelector('form').style.display = 'none';
+  }
+
+  function getSelectedPaymentMethod() {
+    // Get the selected payment method
+    const paymentMethodInputs = document.getElementsByName('paymentMethod');
+    const selectedPaymentMethod = Array.from(paymentMethodInputs).find(input => input.checked);
+
+    return selectedPaymentMethod ? selectedPaymentMethod.nextSibling.textContent.trim() : 'N/A';
+  }
+</script>
+
+</body>
+
+</html>

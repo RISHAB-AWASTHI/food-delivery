@@ -1,0 +1,282 @@
+*{
+    padding: 0px;
+      margin: 0px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+  
+  body{
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background: rgb(44, 43, 43);
+  
+  }
+  
+  @media (max-width: 790px) {
+    .navbar-brand {
+        font-size: 25px !important;
+    }
+    .navbar-nav .nav-item .nav-link {
+      font-size: 14px !important;
+  }
+  .elem1{
+    font-size: 20px !important;
+    top: 30% !important;
+  }
+  .elem2{
+    font-size: 12px !important;
+    top: 50% !important;
+  }
+  }
+  
+  @media (max-height:450px), (max-width: 790px) {
+    .navbar-brand {
+      font-size: 25px !important;
+  }
+  .navbar-nav .nav-item .nav-link {
+    font-size: 14px !important;
+  }
+  .elem1{
+  font-size: 20px !important;
+  top: 30% !important;
+  }
+  .elem2{
+  font-size: 12px !important;
+  top: 50% !important;
+  max-width: 75% !important;
+  }
+  }
+  
+  @media (max-height:300px), (max-width: 790px) {
+    .navbar-brand {
+      font-size: 20px !important;
+  }
+  .navbar-nav .nav-item .nav-link {
+    font-size: 14px !important;
+  }
+
+
+  .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black */
+    backdrop-filter: blur(5px); /* Apply a blur effect to the background */
+}
+
+/* Change the text color of the collapsed navbar menu items */
+.navbar-collapse a.nav-link {
+    color: white; /* Change the text color as desired */
+}
+  .elem1{
+  font-size: 16px !important;
+  top: 30% !important;
+  }
+  .elem2{
+  font-size: 10px !important;
+  top: 50% !important;
+  max-width: 90% !important;
+  }
+  }
+  
+  nav.navbar a.navbar-brand {
+      font-size: 40px;
+      font-family: 'Dancing Script', cursive;
+      margin-left: 60px;
+    }
+  
+   ul.navbar-nav {
+      margin-left: auto;
+    }
+  
+  ul.navbar-nav li.nav-item {
+    margin-right: 30px; /* Adjust as needed */
+    font-size: 20px;
+  
+  }
+  
+  button.navbar-toggler {
+    background-color: transparent; /* Change the background color as needed */
+  }
+  
+  /* Change the color of the three lines */
+  button.navbar-toggler span.navbar-toggler-icon {
+    background-color: grey; /* Change the color as needed */
+  }
+  
+  form.form-inline input.form-control {
+    margin-right: 10px; /* Add right margin as needed */
+  }
+  
+  form.form-inline {
+    margin-right: 50px; /* Adjust as needed */
+  }
+  .bgound{
+    max-width: 100%;
+    height: auto;
+  }
+  .top{
+      position: relative;
+  }
+  
+  nav.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent; /* Make the background transparent */
+    z-index: 1000; /* Ensure it's above the background image */
+  }
+  
+  
+  
+  .elem1{
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    font-size: 35px;
+    font-family: 'Dancing Script', cursive;
+    color: white;
+    
+  }
+  .elem2{
+    position: absolute;
+    top: 33%;
+    left: 5%;
+    font-size: 17px;
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-decoration: none;
+    color: white;
+    max-width: 40%;
+  }
+  
+  .mc0{
+    font-family: 'Dancing Script', cursive;
+    font-size: 50px;
+    padding: 30px;
+    color: white;
+    background: rgb(44, 43, 43);
+    
+  }
+  
+  .middle-container{
+      
+    text-align: center;
+    background-color: rgb(30, 32, 32) ;
+  }
+  
+  .veg{
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+  }
+  
+  .button_veg {
+    background-color: rgb(155, 109, 10);
+    border-radius: 45px;
+    font-size: 15px;
+    padding: 10px 45px ;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .button_nonveg {
+    background-color: rgb(155, 109, 10);
+    border-radius: 45px;
+    font-size: 15px;
+    padding: 10px 45px ;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .nonveg {
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+  }
+  
+  .food_img{
+    height:200px;
+     width:200px;
+  }
+  
+  .card {
+    margin: 20px;
+    float: left;
+  }
+  
+  .f1{
+    background: rgb(39, 42, 42);
+    border-radius:20px 20px 0px 0px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .card-body {
+    border-radius: 0px 0px 20px 20px;
+    background-color: rgb(155, 109, 10);
+  }
+  
+  
+  .bottom-left{
+      float: left;
+      width: 27%;
+      margin-right: 3%;
+      margin-left: 3%;
+      margin-top: 50px;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 50px;
+      padding: 30px;
+      color: white;
+      background: rgb(44, 43, 43);
+      clear: both;
+  }
+  .bottom-center{
+      float: left;
+      width: 28%;
+      margin-left: 3%;
+      margin-right:3%;
+      margin-top: 50px;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 50px;
+      padding: 30px;
+      color: white;
+      background: rgb(44, 43, 43);
+  }
+  .bottom-right{
+      float: right;
+      width: 27%;
+      margin-right: 3%;
+      margin-left: 3%;
+      margin-top: 50px;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 50px;
+      padding: 30px;
+      color: white;
+      background: rgb(44, 43, 43);
+  }
+  
+  .map {
+      margin-top: 20px;
+  }
+
+
+  .card-columns {
+    column-count: 3;
+}
+
+.description {
+  max-height: 100px;
+  overflow: hidden;
+}
+
+.description:hover {
+  max-height: initial;
+}

@@ -1,0 +1,216 @@
+body {
+    background: #ddd;
+    min-height: 100vh;
+    display: flex;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    align-items: middle;
+    flex-direction: column; /* Added to arrange navbar and cart vertically */
+}
+
+.navbar {
+    background-color: #fff; /* Background color for the navbar */
+}
+
+.cart {
+    background-color: #fff;
+    padding: 4vh 5vh;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+
+/* Your existing CSS code for .card, .summary, .row, .title, etc. */
+
+/* Add your existing CSS rules for .title, .card, .cart, .summary, .row, .main, .col-2, .col, .a, .close, .img, .back-to-shop, .h5, .hr, .form, .select, .input, .btn, #code, a, and other elements */
+
+/* The rest of your CSS code remains the same */
+
+
+.title {
+    margin-bottom: 5vh;
+}
+
+.card {
+    margin: auto;
+    max-width: 950px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent;
+}
+
+@media (max-width: 767px) {
+    .card {
+        margin: 3vh auto;
+    }
+}
+
+
+
+@media (max-width: 767px) {
+    .cart {
+        padding: 4vh;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 1rem;
+    }
+}
+
+.summary {
+    background-color: #ddd;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 4vh;
+    color: rgb(65, 65, 65);
+}
+
+@media (max-width: 767px) {
+    .summary {
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 1rem;
+    }
+}
+
+.row {
+    margin: 0;
+}
+
+.title b {
+    font-size: 1.5rem;
+}
+
+.main {
+    margin: 0;
+    padding: 2vh 0;
+    width: 100%;
+}
+
+.col-2, .col {
+    padding: 0 1rem;
+}
+
+a {
+    padding: 0 1rem;
+}
+
+.close {
+    margin-left: auto;
+    font-size: 0.7rem;
+}
+
+img {
+    width: 3.5rem;
+}
+
+.back-to-shop {
+    margin-top: 4.5rem;
+}
+
+h5 {
+    margin-top: 4vh;
+}
+
+hr {
+    margin-top: 1.25rem;
+}
+
+form {
+    padding: 2vh 0;
+}
+
+select {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1.5vh 1rem;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+}
+
+input {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.btn {
+    background-color: #000;
+    border-color: #000;
+    color: white;
+    width: 100%;
+    font-size: 0.7rem;
+    margin-top: 4vh;
+    padding: 1vh;
+    border-radius: 0;
+}
+
+.btn:focus {
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    -webkit-user-select: none;
+    transition: none;
+}
+
+.btn:hover {
+    color: white;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+#code {
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center;
+}
+
+
+nav.navbar a.navbar-brand {
+    font-size: 40px;
+    font-family: 'Dancing Script', cursive;
+    margin-left: 60px;
+  }
+
+ ul.navbar-nav {
+    margin-left: auto;
+  }
+
+ul.navbar-nav li.nav-item {
+  margin-right: 30px; /* Adjust as needed */
+  font-size: 20px;
+
+}
+
+button.navbar-toggler {
+  background-color: transparent; /* Change the background color as needed */
+}
+
+/* Change the color of the three lines */
+button.navbar-toggler span.navbar-toggler-icon {
+  background-color: grey; /* Change the color as needed */
+}
+
+form.form-inline input.form-control {
+  margin-right: 10px; /* Add right margin as needed */
+}
+
+form.form-inline {
+  margin-right: 50px; /* Adjust as needed */
+}
